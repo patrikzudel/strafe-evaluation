@@ -63,7 +63,7 @@ fn is_azerty_layout() -> bool {
     unsafe {
         let layout = GetKeyboardLayout(0);
         let layout_id = layout as u32 & 0xFFFF;
-        return layout_id == 0x040C;
+        return matches!(layout_id, 0x040C | 0x080C | 0x140C | 0x180C);
     }
 }
 
