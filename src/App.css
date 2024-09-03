@@ -1,0 +1,32 @@
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+ *,
+ *::before,
+ *::after {
+   box-sizing: border-box;
+ }
+
+ body {
+   margin: 0;
+   /* Edit below */
+   font-family: system-ui, sans-serif;
+   background-color: white;
+   color: black;
+ }
+
+ .text-stroke {
+   -webkit-text-stroke: 1px black;
+
+ }
+
+ .bottom-bar {
+   -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.19);
+   -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.19);
+   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.19);
+ }
+
+ .wasd-button {
+   @apply shadow-md font-medium px-3 w-20 py-1 my-1 cursor-pointer rounded-md hover:scale-105
+ }
