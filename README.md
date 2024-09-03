@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/patrikzudel/PatrikZeros-ChatGPT-API-UI/main/LogoLight.png?sanitize=true#gh-dark-mode-only" alt="Logo">
+<img src="https://raw.githubusercontent.com/patrikzudel/strafe-evaluation/main/preview.png?sanitize=true#gh-dark-mode-only" alt="Logo">
 
 #### ⭐️ Star the repo if you like it!
 #### Program that allows you to track your strafe performance! Find out if you would benefit from Snap Tap | SOCD.
