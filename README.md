@@ -1,12 +1,16 @@
+# Track your strafe performance in games! 
+
+#### Find out if you would benefit from Snap Tap and SOCD.
+
 <img src="https://raw.githubusercontent.com/patrikzudel/strafe-evaluation/main/preview.png?sanitize=true#gh-dark-mode-only" alt="Logo">
 
-#### ⭐️ Star the repo if you like it!
-#### Program that allows you to track your strafe performance! Find out if you would benefit from Snap Tap | SOCD.
+⭐️ Star the repo if you like it!
 
   ## 📖 How to use
-  - Visit the GitHub Pages release [here](https://chat.patrikzudel.me/).
-  - Launch the setup and install the program
-  - Strafe! 
+
+  - Visit the GitHub Pages release [here](https://github.com/patrikzudel/strafe-evaluation/releases).
+  - Launch the setup and install the program.
+  - Start the program and strafe! 
 
 ## ⚡ Features
 - Tracking of strafe performance
