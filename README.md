@@ -16,7 +16,7 @@
 
     - **Late Release** — both keys were pressed for X milliseconds
     - **Early Release** — no keys were pressed for X milliseconds
-    - **Perfect strafe** — the strafe was deemed perfect within a 2 milliseconds margin of error
+    - **Perfect strafe** — the strafe was deemed perfect within a 2 millisecond margin of error
     - If you **need help** with understanding what is a **"Early"** or **"Late"** strafe, **click on the buttons next to "A" and "D"**. Clicking a button will trigger an **animation** that showcases each strafe type.
 
 **Note**: The tracking will likely not work while **FACEIT Anti-cheat** is running, they might block the global input tracking.
