@@ -5,6 +5,7 @@ use std::thread::sleep;
 use std::time::{Duration, SystemTime};
 use tauri::AppHandle;
 use tauri::Manager;
+use winapi::um::winuser::GetKeyboardLayout;
 
 #[derive(Clone, serde::Serialize)]
 struct Payload {
@@ -58,6 +59,14 @@ fn eval_overstrafe(elapsed: Duration, both_pressed_time: &mut Option<SystemTime>
     *both_pressed_time = None;
 }
 
+fn is_azerty_layout() -> bool {
+    unsafe {
+        let layout = GetKeyboardLayout(0);
+        let layout_id = layout as u32 & 0xFFFF;
+        return layout_id == 0x040C;
+    }
+}
+
 fn main() {
     tauri::Builder::default()
         .setup(|app| {
@@ -69,25 +78,34 @@ fn main() {
                 let mut both_pressed_time: Option<SystemTime> = None;
                 let mut right_released_time: Option<SystemTime> = None;
                 let mut left_released_time: Option<SystemTime> = None;
+                let is_azerty = is_azerty_layout();
                 loop {
                     // Tickrate
                     sleep(Duration::from_millis(1));
 
                     // Key detection
-                    if right_pressed && !DKey.is_pressed() {
+                    if right_pressed && !DKey.is_pressed() && !RightKey.is_pressed() {
                         // D released
                         right_pressed = false;
                         let _ = handle.emit_all("d-released", ());
                         right_released_time = Some(SystemTime::now());
                     }
-                    if left_pressed && !AKey.is_pressed() {
+                    if left_pressed
+                        && (is_azerty || !AKey.is_pressed())
+                        && (!is_azerty || !QKey.is_pressed())
+                        && !LeftKey.is_pressed()
+                    {
                         // A released
                         left_pressed = false;
                         let _ = handle.emit_all("a-released", ());
                         left_released_time = Some(SystemTime::now());
                     }
 
-                    if AKey.is_pressed() && !left_pressed {
+                    if ((!is_azerty && AKey.is_pressed())
+                        || (is_azerty && QKey.is_pressed())
+                        || LeftKey.is_pressed())
+                        && !left_pressed
+                    {
                         // A pressed
                         left_pressed = true;
                         let _ = handle.emit_all("a-pressed", ());
@@ -106,7 +124,7 @@ fn main() {
                         }
                     }
 
-                    if DKey.is_pressed() && !right_pressed {
+                    if (DKey.is_pressed() || RightKey.is_pressed()) && !right_pressed {
                         // D pressed
                         right_pressed = true;
                         let _ = handle.emit_all("d-pressed", ());
